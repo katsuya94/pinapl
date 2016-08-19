@@ -24,6 +24,7 @@ These solutions impose rigid restrictions upon developers. `pinapl` attempts to 
 * Strong association between code and specifications
 * Provide a medium for specifying desired behavior with implementation in any language
 * Provide tools for testing, configuring, running, and maintaining systems
+* Allows developers to use multiple representations of a well-defined datatype
 
 ## Solution
 `pinapl` is a specification language for the interlocking components that make up a system.
@@ -34,3 +35,21 @@ These solutions impose rigid restrictions upon developers. `pinapl` attempts to 
 * sqlite database
 * Ruby Sinatra REST API for setting up games and adding/updating/retrieving scores
 * Node.js/Express/AngularJS Web interface that hooks into the REST API
+
+## Lifecycle of a `pinapl` command
+```
+pinapl exec <<- 'EOF'
+(Database.insert "dogs" (object 'kind "shiba" 'name "doge" 'mood "much wow")) 
+EOF
+```
+
+After evaluation of the `pinapl` expression, this becomes...
+
+```
+(object 'data 
+```
+
+## Random thoughts
+
+`&::Thing` is how you address library modules
+`~::Thing` is how you address local modules
